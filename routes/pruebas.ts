@@ -1,6 +1,8 @@
 import { Router } from "express";
-const { validMaster:VM } = require('../middlewares');
+const { obtenerPRUEBA } = require('../controllers/prueba');
 
 const _r = Router();
 
-_r.get('/',VM,obtenerPRUEBA);
+_r.get('/',obtenerPRUEBA);
+
+module.exports = _r;

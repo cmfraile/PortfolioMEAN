@@ -41,7 +41,8 @@ var obtenerPRUEBA = function (req, res) { return __awaiter(void 0, void 0, void 
         try {
             res.status(200).json('La prueba se ha realizado correctamente');
         }
-        finally {
+        catch (err) {
+            return [2 /*return*/, res.status(500).json(err)];
         }
         return [2 /*return*/];
     });

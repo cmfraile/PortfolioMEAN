@@ -1,5 +1,4 @@
-import { Response } from "express";
-
+import { Response , Request } from "express";
 
 const obtenerPRUEBA = async(req:Request,res:Response) => {
     try{

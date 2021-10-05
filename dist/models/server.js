@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var cors_1 = __importDefault(require("cors"));
 var Server = /** @class */ (function () {
     function Server() {
         this.app = (0, express_1.default)();
@@ -13,16 +14,16 @@ var Server = /** @class */ (function () {
         };
         this.middlewares();
         this.routes();
+        this.app.listen(this.port);
     }
-    ;
     Server.prototype.middlewares = function () {
-        this.app.use(express_1.default.static('public'));
+        this.app.use((0, cors_1.default)());
+        this.app.use(express_1.default.json());
+        //this.app.use( express.static('public') );
     };
-    ;
     Server.prototype.routes = function () {
         this.app.use(this.paths.pruebas, require('../routes/pruebas'));
     };
-    ;
     Server.prototype.listen = function () {
         var _this = this;
         this.app.listen(this.port, function () {
@@ -30,8 +31,7 @@ var Server = /** @class */ (function () {
             console.log("tsc --watch && nodemon dist/app.js &&");
         });
     };
-    ;
     return Server;
 }());
-module.exports = Server;
+exports.default = Server;
 //# sourceMappingURL=server.js.map
