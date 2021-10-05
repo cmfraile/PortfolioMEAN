@@ -8,7 +8,21 @@ var Server = /** @class */ (function () {
     function Server() {
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '8000';
+        this.paths = {
+            pruebas: '/api/pruebas'
+        };
+        this.middlewares();
+        this.routes();
     }
+    ;
+    Server.prototype.middlewares = function () {
+        this.app.use(express_1.default.static('public'));
+    };
+    ;
+    Server.prototype.routes = function () {
+        this.app.use(this.paths.pruebas, require('../routes/pruebas'));
+    };
+    ;
     Server.prototype.listen = function () {
         var _this = this;
         this.app.listen(this.port, function () {
@@ -16,7 +30,8 @@ var Server = /** @class */ (function () {
             console.log("tsc --watch && nodemon dist/app.js &&");
         });
     };
+    ;
     return Server;
 }());
-exports.default = Server;
+module.exports = Server;
 //# sourceMappingURL=server.js.map
