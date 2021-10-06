@@ -19,12 +19,12 @@ const arrayPRUEBAS = async(req:Request,res:Response) => {
         {
             nombre: 'Prueba numero 2',
             foto: 'https://picsum.photos/200',
-            descripcion: 'Descripción del primer objeto'
+            descripcion: 'Descripción del segundo objeto'
         },
         {
             nombre: 'Prueba numero 3',
             foto: 'https://picsum.photos/200',
-            descripcion: 'Descripción del segundo objeto'
+            descripcion: 'Descripción del tercer objeto'
         },
     ]
     
