@@ -47,5 +47,34 @@ var obtenerPRUEBA = function (req, res) { return __awaiter(void 0, void 0, void 
         return [2 /*return*/];
     });
 }); };
-module.exports = { obtenerPRUEBA: obtenerPRUEBA };
+var arrayPRUEBAS = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var usuariostest;
+    return __generator(this, function (_a) {
+        usuariostest = [
+            {
+                nombre: 'Prueba numero 1',
+                foto: 'https://picsum.photos/200',
+                descripcion: 'Descripción del primer objeto'
+            },
+            {
+                nombre: 'Prueba numero 2',
+                foto: 'https://picsum.photos/200',
+                descripcion: 'Descripción del primer objeto'
+            },
+            {
+                nombre: 'Prueba numero 3',
+                foto: 'https://picsum.photos/200',
+                descripcion: 'Descripción del segundo objeto'
+            },
+        ];
+        try {
+            res.status(200).json(usuariostest);
+        }
+        catch (err) {
+            return [2 /*return*/, res.status(500).json(err)];
+        }
+        return [2 /*return*/];
+    });
+}); };
+module.exports = { obtenerPRUEBA: obtenerPRUEBA, arrayPRUEBAS: arrayPRUEBAS };
 //# sourceMappingURL=prueba.js.map
