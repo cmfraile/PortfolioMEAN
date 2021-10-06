@@ -8,7 +8,7 @@ var cors_1 = __importDefault(require("cors"));
 var Server = /** @class */ (function () {
     function Server() {
         this.app = (0, express_1.default)();
-        this.port = process.env.PORT || '8000';
+        this.port = process.env.PORT || '9000';
         this.paths = {
             pruebas: '/api/pruebas'
         };
