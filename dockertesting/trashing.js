@@ -1,6 +1,6 @@
 db.createUser({
-    user:'cafeuser',
-    pwd:'cafeuser',
+    user:'pruebauser',
+    pwd:'pruebauser',
     roles:['readWrite']
 })
 
