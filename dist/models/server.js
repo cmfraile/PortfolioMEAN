@@ -14,7 +14,6 @@ var Server = /** @class */ (function () {
         };
         this.middlewares();
         this.routes();
-        this.app.listen(this.port);
     }
     Server.prototype.middlewares = function () {
         this.app.use((0, cors_1.default)());
