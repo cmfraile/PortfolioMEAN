@@ -1,4 +1,5 @@
 import { Response , Request } from "express";
+const { Usuario } = require('../models/usuario');
 
 const obtenerPRUEBA = async(req:Request,res:Response) => {
     try{
@@ -9,29 +10,11 @@ const obtenerPRUEBA = async(req:Request,res:Response) => {
 }
 
 const arrayPRUEBAS = async(req:Request,res:Response) => {
-    
-    const usuariostest:any = [
-        {
-            nombre: 'Prueba numero 1',
-            foto: 'https://picsum.photos/200',
-            descripcion: 'Descripción del primer objeto'
-        },
-        {
-            nombre: 'Prueba numero 2',
-            foto: 'https://picsum.photos/200',
-            descripcion: 'Descripción del segundo objeto'
-        },
-        {
-            nombre: 'Prueba numero 3',
-            foto: 'https://picsum.photos/200',
-            descripcion: 'Descripción del tercer objeto'
-        },
-    ]
-    
     try{
-        res.status(200).json(usuariostest);
+        const busqueda = await Usuario.find();
+        res.status(200).json(busqueda);
     } catch(err){
-        return res.status(500).json(err);
+        return res.status(500).json({err});
     }
 }
 

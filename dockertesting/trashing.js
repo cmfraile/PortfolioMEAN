@@ -6,6 +6,26 @@ db.createUser({
 
 db.usuarios.insertMany([
     {
+        nombre:'Carlos Fraile',
+        foto:'https://picsum.photos/200',
+        descripcion:'Primer objeto de la lista'
+    },
+    {
+        nombre:'Manuel Gómez',
+        foto:'https://picsum.photos/200',
+        descripcion:'segundo objeto de la lista'
+    },
+    {
+        nombre:'Rodrigo Díaz',
+        foto:'https://picsum.photos/200',
+        descripcion:'Tercer objeto de la lista'
+    },
+]);
+
+
+
+db.usuarios.insertMany([
+    {
         "nombre":"Carlos",
         "correo":"Carlos@correo.es",
         "password":"carlospass",

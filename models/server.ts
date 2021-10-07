@@ -1,5 +1,6 @@
 import express , { Application } from 'express';
 import cors from 'cors';
+const { dbC } = require('../db/configdb');
 
 class Server {
 
@@ -12,8 +13,9 @@ class Server {
         this.port = process.env.PORT || '8000';
         this.paths = {
             pruebas:    '/api/pruebas'
-        }
+        };
         this.middlewares();
+        this.conectarDB();
         this.routes();
     }
 
@@ -26,6 +28,8 @@ class Server {
     routes(){
         this.app.use(this.paths.pruebas,require('../routes/pruebas'));
     }
+
+    async conectarDB(){await dbC()};
 
     listen(){
         this.app.listen(this.port, () => {
