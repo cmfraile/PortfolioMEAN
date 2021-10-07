@@ -18,6 +18,20 @@ const arrayPRUEBAS = async(req:Request,res:Response) => {
     }
 }
 
+const insertarUSUARIO = async(req:Request,res:Response) =>{
+    try{
+        const data = {
+            nombre : req.body.nombre,
+            descripcion : req.body.descripcion
+        }
+        const usuario = new Usuario(data);
+        await usuario.save();
+        res.status(200).json(usuario);
+    } catch(err){
+        return res.status(500).json({err});
+    }
+}
 
 
-module.exports = { obtenerPRUEBA , arrayPRUEBAS }
+
+module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO }
