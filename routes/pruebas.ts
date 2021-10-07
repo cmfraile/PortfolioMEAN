@@ -9,6 +9,10 @@ _r.get('/',VM,obtenerPRUEBA);
 
 _r.get('/arraypruebas',VM,arrayPRUEBAS);
 
-_r.post('/',insertarUSUARIO);
+_r.post('/',[
+    body('nombre').not().isEmpty(),
+    body('descripcion').not().isEmpty(),
+    VM
+],insertarUSUARIO);
 
 module.exports = _r;
