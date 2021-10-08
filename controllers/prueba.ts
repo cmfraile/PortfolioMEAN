@@ -32,6 +32,16 @@ const insertarUSUARIO = async(req:Request,res:Response) =>{
     }
 }
 
+const borrarTODO = async(req:Request,res:Response) => {
+    try{
+        await Usuario.deleteMany({});
+        const busqueda = await Usuario.find()
+        res.status(200).json({busqueda});
+    } catch(err){
+        return res.status(500).json({err});
+    }
+}
 
 
-module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO }
+
+module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO , borrarTODO }
