@@ -1,6 +1,6 @@
 import { Router } from "express";
 const { body } = require('express-validator');
-const { obtenerPRUEBA , arrayPRUEBAS, insertarUSUARIO , borrarTODO , agregarADMIN } = require('../controllers/prueba');
+const { obtenerPRUEBA , arrayPRUEBAS, insertarUSUARIO , borrarTODO , agregarADMIN , login } = require('../controllers/prueba');
 const { validMaster:VM } = require('../middlewares/validmaster');
 
 const _r = Router();
@@ -20,6 +20,12 @@ _r.post('/crearadmin',[
     body('pass').not().isEmpty(),
     VM
 ],agregarADMIN);
+
+_r.post('/login',[
+    body('usuario').not().isEmpty(),
+    body('pass').not().isEmpty(),
+    VM
+],login)
 
 _r.delete('/borrartodo',borrarTODO);
 
