@@ -1,6 +1,5 @@
 import { Response , Request } from "express";
 const { Usuario } = require('../models/usuario');
-const bcjs = require('bcryptjs');
 
 const obtenerPRUEBA = async(req:Request,res:Response) => {
     try{
@@ -53,7 +52,6 @@ const agregarADMIN = async(req:Request,res:Response) => {
             admin : true
         }
         */
-        console.log(await bcjs.HashSync(req.body.pass,bcjs.genSaltSync(5)));
         const busqueda = await Usuario.find();
         res.status(200).json(busqueda);
     } catch(err){
