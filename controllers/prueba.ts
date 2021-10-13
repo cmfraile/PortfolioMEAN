@@ -1,5 +1,6 @@
 import { Response , Request } from "express";
 const { Usuario } = require('../models/usuario');
+const bcjs = require('bcryptjs');
 
 const obtenerPRUEBA = async(req:Request,res:Response) => {
     try{
@@ -7,7 +8,7 @@ const obtenerPRUEBA = async(req:Request,res:Response) => {
     } catch(err) {
         return res.status(500).json(err);
     }
-}
+};
 
 const arrayPRUEBAS = async(req:Request,res:Response) => {
     try{
@@ -16,7 +17,7 @@ const arrayPRUEBAS = async(req:Request,res:Response) => {
     } catch(err){
         return res.status(500).json({err});
     }
-}
+};
 
 const insertarUSUARIO = async(req:Request,res:Response) =>{
     try{
@@ -30,7 +31,7 @@ const insertarUSUARIO = async(req:Request,res:Response) =>{
     } catch(err){
         return res.status(500).json({err});
     }
-}
+};
 
 const borrarTODO = async(req:Request,res:Response) => {
     try{
@@ -40,8 +41,26 @@ const borrarTODO = async(req:Request,res:Response) => {
     } catch(err){
         return res.status(500).json({err});
     }
-}
+};
+
+const agregarADMIN = async(req:Request,res:Response) => {
+    try {
+        
+        /*
+        const data = {
+            nombre : req.body.nombre,
+            pass : bcjs.HashSync(req.body.pass,bcjs.genSaltSync(5)),
+            admin : true
+        }
+        */
+        console.log(await bcjs.HashSync(req.body.pass,bcjs.genSaltSync(5)));
+        const busqueda = await Usuario.find();
+        res.status(200).json(busqueda);
+    } catch(err){
+        res.status(500).json({err});
+    }
+};
 
 
 
-module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO , borrarTODO }
+module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO , borrarTODO , agregarADMIN }
