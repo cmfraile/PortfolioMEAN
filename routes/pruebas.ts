@@ -1,13 +1,15 @@
 import { Router } from "express";
 const { body } = require('express-validator');
-const { obtenerPRUEBA , arrayPRUEBAS, insertarUSUARIO , borrarTODO , agregarADMIN , login } = require('../controllers/prueba');
-const { validMaster:VM } = require('../middlewares/validmaster');
+const { obtenerPRUEBA , arrayPRUEBAS, insertarUSUARIO , borrarTODO , agregarADMIN , login , loginestado } = require('../controllers/prueba');
+const { validMaster:VM , validarJWT:vJWT } = require('../middlewares/validmaster');
 
 const _r = Router();
 
 _r.get('/',VM,obtenerPRUEBA);
 
-_r.get('/arraypruebas',VM,arrayPRUEBAS);
+_r.get('/arraypruebas',arrayPRUEBAS);
+
+_r.get('/loginestado',[vJWT,VM],loginestado);
 
 _r.post('/',[
     body('nombre').not().isEmpty(),

@@ -79,6 +79,14 @@ const login = async(req:Request,res:Response) => {
 
 }
 
+const loginestado = async(req:Request,res:Response) => {
+    try{
+        res.status(400).json('Todo gucci');
+    } catch(err){
+        res.status(500).json('FUCK');
+    }
+};
 
 
-module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO , borrarTODO , agregarADMIN , login }
+
+module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO , borrarTODO , agregarADMIN , login , loginestado }
