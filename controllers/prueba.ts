@@ -81,9 +81,9 @@ const login = async(req:Request,res:Response) => {
 
 const loginestado = async(req:Request,res:Response) => {
     try{
-        res.status(400).json('Todo gucci');
+        res.send(true);
     } catch(err){
-        res.status(500).json('FUCK');
+        res.status(500).json({msg:'error'});
     }
 };
 

@@ -1,7 +1,8 @@
 import { Router } from "express";
 const { body } = require('express-validator');
 const { obtenerPRUEBA , arrayPRUEBAS, insertarUSUARIO , borrarTODO , agregarADMIN , login , loginestado } = require('../controllers/prueba');
-const { validMaster:VM , validarJWT:vJWT } = require('../middlewares/validmaster');
+const { validMaster:VM } = require('../middlewares/validmaster');
+const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 
 const _r = Router();
 
@@ -9,7 +10,7 @@ _r.get('/',VM,obtenerPRUEBA);
 
 _r.get('/arraypruebas',arrayPRUEBAS);
 
-_r.get('/loginestado',[vJWT,VM],loginestado);
+_r.get('/estado',[vJWT,VM],loginestado);
 
 _r.post('/',[
     body('nombre').not().isEmpty(),
