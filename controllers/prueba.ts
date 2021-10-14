@@ -1,6 +1,7 @@
 import { Response , Request } from "express";
 const { Usuario } = require('../models/usuario');
 const { gJWT } = require('../helpers/gJWT');
+import * as jwt from 'jsonwebtoken';
 import * as bc from 'bcryptjs';
 
 const obtenerPRUEBA = async(req:Request,res:Response) => {
@@ -81,9 +82,18 @@ const login = async(req:Request,res:Response) => {
 
 const loginestado = async(req:Request,res:Response) => {
     try{
-        res.send(true);
+        const token:any = req.headers.token ; const detoken:any = jwt.decode(token);
+        if(detoken == null){return res.send({loginado:false})};
+        const busqueda = await Usuario.findById(detoken.id);
+        return res.status(200).json({
+            loginado:true,
+            usuario: {
+                nombre: busqueda.nombre,
+                foto: busqueda.foto
+            }
+        });
     } catch(err){
-        res.status(500).json({msg:'error'});
+        res.send({loginado:false});
     }
 };
 

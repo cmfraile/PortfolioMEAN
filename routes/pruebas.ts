@@ -10,7 +10,7 @@ _r.get('/',VM,obtenerPRUEBA);
 
 _r.get('/arraypruebas',arrayPRUEBAS);
 
-_r.get('/estado',[vJWT,VM],loginestado);
+_r.get('/estado',VM,loginestado);
 
 _r.post('/',[
     body('nombre').not().isEmpty(),
