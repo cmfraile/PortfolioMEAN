@@ -1,6 +1,7 @@
 import { Router } from "express";
+import { header } from "express-validator";
 const { body } = require('express-validator');
-const { obtenerPRUEBA , arrayPRUEBAS, insertarUSUARIO , borrarTODO , agregarADMIN , login , loginestado } = require('../controllers/prueba');
+const { obtenerPRUEBA , arrayPRUEBAS, insertarUSUARIO , borrarTODO , agregarADMIN , login , loginestado , borrarUNO } = require('../controllers/prueba');
 const { validMaster:VM } = require('../middlewares/validmaster');
 const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 
@@ -28,7 +29,14 @@ _r.post('/login',[
     body('usuario').not().isEmpty(),
     body('pass').not().isEmpty(),
     VM
-],login)
+],login);
+
+_r.delete('/borraruno',[
+    header('id').not().isEmpty(),
+    header('id').isMongoId(),
+    vJWT,
+    VM
+],borrarUNO);
 
 _r.delete('/borrartodo',borrarTODO);
 

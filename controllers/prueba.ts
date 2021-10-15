@@ -36,9 +36,19 @@ const insertarUSUARIO = async(req:Request,res:Response) =>{
     }
 };
 
+const borrarUNO = async(req:Request,res:Response) => {
+    try{
+        const {id} = req.headers;
+        await Usuario.findByIdAndDelete(id);
+        res.status(200).json({msg:`El objeto ${id} fue borrado satisfactoriamente`});
+    } catch(err) {
+        res.status(400).json({msg : 'Error en la operación',err})
+    }
+}
+
 const borrarTODO = async(req:Request,res:Response) => {
     try{
-        await Usuario.deleteMany({});
+        await Usuario.deleteMany({admin:false});
         const busqueda = await Usuario.find()
         res.status(200).json({busqueda});
     } catch(err){
@@ -99,4 +109,4 @@ const loginestado = async(req:Request,res:Response) => {
 
 
 
-module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO , borrarTODO , agregarADMIN , login , loginestado }
+module.exports = { obtenerPRUEBA , arrayPRUEBAS , insertarUSUARIO , borrarTODO , agregarADMIN , login , loginestado , borrarUNO }
