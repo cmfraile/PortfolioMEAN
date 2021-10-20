@@ -7,10 +7,14 @@ const adminSchema = new Schema<Admin>({
     pass:{type:String,required:true}
 },{collection : 'admin'});
 
+/*
 adminSchema.methods.toJSON = function(){
-    const { _id , pass , ...admin } = this.toObject();
-    return admin;
+    const { nombre } = this.toObject();
+    return nombre;
 };
+*/
 
-export const Admin = model<Admin>('admin',adminSchema);
+const Admin = model<Admin>('admin',adminSchema);
+
+module.exports = { Admin };
 

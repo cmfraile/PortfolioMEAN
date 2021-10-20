@@ -1,9 +1,16 @@
-import { connect as MonConnect } from "mongoose";
+import { connect as MonConnect, ConnectOptions } from "mongoose";
+const mongoose = require('mongoose');
 
 const dbC = async() => {
     try{
-        MonConnect('mongodb://localhost:27017/BDPortfolio',{user:'usuario',pass:'usuario'},(err) => {console.log});
-        console.log('Estamos correctamente conectados a la base de datos.')
+        const options:ConnectOptions = {
+            user:'usuario',
+            pass:'usuario',
+            dbName:'BDP',
+            //autoCreate:true
+        }
+        await MonConnect('mongodb://localhost:27017',options,(err) => {console.log(err)});
+        //console.log('Estamos correctamente conectados a la base de datos.')
     }catch(err){console.log(err);throw new Error('No se logro establecer la conexión')};
 }
 
