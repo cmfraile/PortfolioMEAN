@@ -2,7 +2,7 @@ services:
   mongo:
     image: mongo
     restart: always
-    container_name: mongoPortfolio
+    container_name: MDBP
     ports:
       - "27017:27017"
     environment:
