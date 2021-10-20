@@ -12,7 +12,8 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8000';
         this.paths = {
-            pruebas:    '/api/pruebas'
+            administrador: '/api/administrador',
+            testing: '/api/testing'
         };
         this.middlewares();
         this.conectarDB();
@@ -26,15 +27,15 @@ class Server {
     }
 
     routes(){
-        this.app.use(this.paths.pruebas,require('../routes/pruebas'));
+        //this.app.use(this.paths.administrador,require('../routes/administrador'));
+        this.app.use(this.paths.testing,require('../routes/testing'));
     }
 
     async conectarDB(){await dbC()};
 
     listen(){
         this.app.listen(this.port, () => {
-            console.log(`Servidor corriendo en puerto ${this.port}`);
-            console.log("tsc --watch && nodemon dist/app.js &&");
+            console.log(`SERVIDOR CORRIENDO EN DESARROLLO`);
         })
     }
 

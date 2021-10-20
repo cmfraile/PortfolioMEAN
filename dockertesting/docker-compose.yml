@@ -2,7 +2,7 @@ services:
   mongo:
     image: mongo
     restart: always
-    container_name: mongotesting
+    container_name: mongoPortfolio
     ports:
       - "27017:27017"
     environment:
