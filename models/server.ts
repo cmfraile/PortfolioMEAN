@@ -12,7 +12,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8000';
         this.paths = {
-            administrador: '/api/administrador',
+            admin: '/api/admin',
             testing: '/api/testing'
         };
         this.middlewares();
@@ -27,7 +27,7 @@ class Server {
     }
 
     routes(){
-        //this.app.use(this.paths.administrador,require('../routes/administrador'));
+        this.app.use(this.paths.admin,require('../routes/admin'));
         this.app.use(this.paths.testing,require('../routes/testing'));
     }
 

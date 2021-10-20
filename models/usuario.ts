@@ -1,21 +1,16 @@
 import { Schema , model } from 'mongoose';
 
-interface Usuario { nombre:string, foto:string, descripcion:string, admin:boolean, pass:string };
+interface Admin {nombre:string,pass:string};
 
-const usuarioSchema = new Schema<Usuario>({
+const adminSchema = new Schema<Admin>({
     nombre:{type:String,required:true},
-    foto:{type:String,required:false,default:'https://picsum.photos/200'},
-    descripcion:{type:String,required:false},
-    admin:{type:Boolean,required:true},
-    pass:{type:String,required:false}
-},{ collection : 'usuarios' });
+    pass:{type:String,required:true}
+},{collection : 'admin'});
 
-usuarioSchema.methods.toJSON = function(){
-    const { __v , _id , pass , ...usuario } = this.toObject();
-    usuario.id = _id;
-    return usuario;
-}
+adminSchema.methods.toJSON = function(){
+    const { _id , pass , ...admin } = this.toObject();
+    return admin;
+};
 
-const Usuario = model<Usuario>('Usuario',usuarioSchema);
+export const Admin = model<Admin>('admin',adminSchema);
 
-module.exports = { Usuario }
