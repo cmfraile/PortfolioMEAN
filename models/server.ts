@@ -12,8 +12,9 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8000';
         this.paths = {
-            admin: '/api/admin',
-            testing: '/api/testing'
+            testing:'/api/',
+            admin:'/api/admin',
+            ntair:'/api/ntair'
         };
         this.middlewares();
         this.conectarDB();
@@ -27,8 +28,9 @@ class Server {
     }
 
     routes(){
-        this.app.use(this.paths.admin,require('../routes/admin'));
         this.app.use(this.paths.testing,require('../routes/testing'));
+        this.app.use(this.paths.admin,require('../routes/admin'));
+        this.app.use(this.paths.ntair,require('../routes/ntair'));
     }
 
     async conectarDB(){await dbC()};
