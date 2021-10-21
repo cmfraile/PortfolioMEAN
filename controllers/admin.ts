@@ -6,13 +6,26 @@ const { Admin } = require('../models/admin');
 
 const getADMIN = async(req:Request,res:Response) => {
     try{
-        const data = {nombre:'usuario',pass:'usuario'};
-        const admin = new Admin(data);
-        await admin.save();
-        const busqueda = await Admin.find();
-        res.status(200).json({busqueda});
-       res.send('Llegas aqui');
-    } catch(err){res.send(err)}
+        const admin:[any] = await Admin.find();
+        if(admin.length < 1){
+            return res.status(200).send('Aun no tenemos administrador');
+        } else {
+            return res.status(200).json({msg:'Los datos del administrador son los siguientes:',admin})
+        }
+    }catch(err){return res.status(500).json(err)};
 }
 
-module.exports = { getADMIN }
+const crearADMIN = async(req:Request,res:Response) => {
+    try{
+        const admin:[any] = await Admin.find();
+        if(admin.length == 1){return res.status(403).json({msg:'No se va a crear otro admin, pues ya tenemos uno',admin})};
+        const data = {
+            nombre : req.body.nombre,
+            pass : bc.hashSync(req.body.pass,await bc.genSalt(5))
+        };
+        const primeradmin = new Admin(data) ; primeradmin.save();
+        return res.status(200).json({msg:'Admin creado',primeradmin});
+    }catch(err){return res.status(500).json(err)};
+}
+
+module.exports = { getADMIN , crearADMIN }
