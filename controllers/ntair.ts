@@ -25,7 +25,7 @@ const ntairPOST = async(req:Request,res:Response) => {
         if(busqueda.length){await Ntair.deleteMany({})};
         const nuevontair = new Ntair(data) ; await nuevontair.save();
         const nuevabusqueda = await Ntair.find();
-        res.status(200).json(nuevabusqueda);
+        return res.status(200).json(nuevabusqueda);
     }catch(err){return res.status(500).json(err)};
 }
 
