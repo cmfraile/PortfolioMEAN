@@ -5,6 +5,7 @@ import * as ev from 'express-validator';
 
 const _r = Router();
 
+
 _r.get('/',ntairGET);
 
 _r.post('/',[
@@ -14,5 +15,6 @@ _r.post('/',[
     ev.body('presentacion').not().isEmpty(),
     VM
 ],ntairPOST);
+
 
 module.exports = _r;

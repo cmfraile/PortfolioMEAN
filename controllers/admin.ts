@@ -30,15 +30,14 @@ const crearADMIN = async(req:Request,res:Response) => {
 const loginADMIN = async(req:Request,res:Response) => {
     try{
         const data = {
-            usuario : req.body.usuario,
+            nombre : req.body.nombre,
             pass : req.body.pass
         }
-        const admin = await Admin.findOne({nombre:data.usuario});
+        const admin = await Admin.findOne({nombre:data.nombre});
         if(!admin){return res.status(400).send('Ese administrador no existe')};
         const valida = bc.compareSync(data.pass,admin.pass);
         if(!valida){return res.status(400).send('La contraseña del administrador es incorrecta')};
         const token = await gJWT(admin.id);
-        console.log(token);
         res.status(200).json({admin,token});
     }catch(err){return res.status(500).json(err)};
 }
