@@ -8,7 +8,6 @@ const validarJWT = (req:Request,res:Response,next:NextFunction) => {
         if(secreto == ""){return res.status(401).json({msg:'Error en la variable de entorno'})};
         if(!token){return res.status(401).json({msg:'Sin token en la petición'})};
         const tokenvalido = jwt.verify(token,secreto);
-        console.log(tokenvalido);
         next();
     } catch(err) {
         res.status(401).json({msg:'sin token en la petición'});

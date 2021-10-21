@@ -1,6 +1,5 @@
 import { Response , Request } from "express";
 const { gJWT } = require('../helpers/gJWT');
-import * as jwt from 'jsonwebtoken';
 import * as bc from 'bcryptjs';
 const { Admin } = require('../models/dbmodels');
 
@@ -28,4 +27,20 @@ const crearADMIN = async(req:Request,res:Response) => {
     }catch(err){return res.status(500).json(err)};
 }
 
-module.exports = { getADMIN , crearADMIN }
+const loginADMIN = async(req:Request,res:Response) => {
+    try{
+        const data = {
+            usuario : req.body.usuario,
+            pass : req.body.pass
+        }
+        const admin = await Admin.findOne({nombre:data.usuario});
+        if(!admin){return res.status(400).send('Ese administrador no existe')};
+        const valida = bc.compareSync(data.pass,admin.pass);
+        if(!valida){return res.status(400).send('La contraseña del administrador es incorrecta')};
+        const token = await gJWT(admin.id);
+        console.log(token);
+        return res.status(200).json({admin,token});
+    }catch(err){return res.status(500).json(err)};
+}
+
+module.exports = { getADMIN , crearADMIN , loginADMIN }
