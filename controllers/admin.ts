@@ -39,7 +39,7 @@ const loginADMIN = async(req:Request,res:Response) => {
         if(!valida){return res.status(400).send('La contraseña del administrador es incorrecta')};
         const token = await gJWT(admin.id);
         console.log(token);
-        return res.status(200).json({admin,token});
+        res.status(200).json({admin,token});
     }catch(err){return res.status(500).json(err)};
 }
 
