@@ -16,5 +16,7 @@ const ntairSchema = new Schema<interfacesPortfolio.ntair>({
     presentacion:{type:String,required:true}
 },{collection:'ntair'}) ; const Ntair = model<interfacesPortfolio.ntair>('ntair',ntairSchema);
 
+
+
 module.exports = { Admin , Ntair };
 

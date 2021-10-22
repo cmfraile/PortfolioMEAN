@@ -1,7 +1,5 @@
 import { Response , Request } from "express";
 const { Ntair } = require('../models/dbmodels');
-const { validMaster:VM } = require('../middlewares/validmaster');
-const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 import { ntair } from "../models/interfaces.ref";
 import * as jwt from 'jsonwebtoken';
 
