@@ -14,7 +14,8 @@ class Server {
         this.paths = {
             testing:'/api/',
             admin:'/api/admin',
-            ntair:'/api/ntair'
+            ntair:'/api/ntair',
+            experiencia:'/api/experiencia'
         };
         this.middlewares();
         this.conectarDB();
@@ -31,6 +32,7 @@ class Server {
         this.app.use(this.paths.testing,require('../routes/testing'));
         this.app.use(this.paths.admin,require('../routes/admin'));
         this.app.use(this.paths.ntair,require('../routes/ntair'));
+        this.app.use(this.paths.experiencia,require('../routes/experiencia'));
     }
 
     async conectarDB(){await dbC()};
