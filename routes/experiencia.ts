@@ -20,13 +20,13 @@ _r.post('/',[
 
 _r.put('/',[
     vJWT,
-    ev.body('id').isMongoId().custom( existeObj(ev.body('id'),'experiencia') ),
+    //ev.body('id').isMongoId().custom( existeObj(ev.body('id'),'experiencia') ),
     VM
 ],putEXPs);
 
 _r.delete('/',[
     vJWT,
-    ev.body('id').isMongoId().custom( existeObj(ev.body('id'),'experiencia') ),
+    //ev.body('id').isMongoId().custom( existeObj(ev.body('id'),'experiencia') ),
     VM
 ],delEXPs);
 

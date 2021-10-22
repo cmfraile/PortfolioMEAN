@@ -29,16 +29,16 @@ const experienciaSchema = new Schema<interfacesPortfolio.experiencia>({
 const formacionSchema = new Schema<interfacesPortfolio.formacion>({
     materia:{type:String,required:true},
     periodo:{type:[Number,Number||null],required:true},
-    institucion:{Type:String,required:true}
+    institucion:{type:String,required:true}
 },{collection:'formacion'});const Formacion = model<interfacesPortfolio.formacion>('formacion',formacionSchema);
 
 const trabajoSchema = new Schema<interfacesPortfolio.trabajos>({
     foto:{type:String,required:false},
     proyecto:{type:String,required:true},
-    estado:{Type:String,required:false},
-    descripcion:{Type:String,required:true},
-    autor:{Type:String,required:true},
-    enlace:{Type:String,required:false}
+    estado:{type:String,required:false},
+    descripcion:{type:String,required:true},
+    autor:{type:String,required:true},
+    enlace:{type:String,required:false}
 },{collection:'trabajo'});const Trabajo = model<interfacesPortfolio.trabajos>('trabajos',trabajoSchema);
 
 module.exports = { Admin , Ntair , Experiencia , Trabajo , Formacion };
