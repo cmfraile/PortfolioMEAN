@@ -4,7 +4,7 @@ const { Experiencia } = require('../models/dbmodels');
 
 const getEXPs = async(req:Request,res:Response) => {
     try{
-        const consulta = await Experiencia.find();
+        const consulta = await Experiencia.find().sort({year:-1});
         return res.status(200).json(consulta);
     }catch(err){return res.status(500).json(err)};
 }
