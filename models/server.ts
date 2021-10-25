@@ -25,6 +25,9 @@ class Server {
     }
 
     middlewares(){
+<<<<<<< HEAD
+=======
+>>>>>>> 14763e7dc5fec910d1a53252a5dd734b0acf3894
         this.app.use(express.json());
         //this.app.use( express.static('public') );
     }
