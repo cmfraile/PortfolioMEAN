@@ -12,6 +12,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8000';
         this.paths = {
+            master:'/api/master',
             testing:'/api/',
             admin:'/api/admin',
             ntair:'/api/ntair',
@@ -31,6 +32,7 @@ class Server {
     }
 
     routes(){
+        this.app.use(this.paths.master,require('../routes/master'));
         this.app.use(this.paths.testing,require('../routes/testing'));
         this.app.use(this.paths.admin,require('../routes/admin'));
         this.app.use(this.paths.ntair,require('../routes/ntair'));

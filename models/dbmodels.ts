@@ -36,14 +36,14 @@ const dinteresSchema = new Schema<interfacesPortfolio.dinteres>({
     dato:{type:String,required:true}
 },{collection:'dinteres'});const Dinteres = model<interfacesPortfolio.dinteres>('dinteres',dinteresSchema);
 
-const trabajoSchema = new Schema<interfacesPortfolio.trabajos>({
+const trabajoSchema = new Schema<interfacesPortfolio.trabajo>({
     foto:{type:String,required:false},
     proyecto:{type:String,required:true},
     estado:{type:String,required:false},
     descripcion:{type:String,required:true},
     autor:{type:String,required:true},
     enlace:{type:String,required:false}
-},{collection:'trabajo'});const Trabajo = model<interfacesPortfolio.trabajos>('trabajos',trabajoSchema);
+},{collection:'trabajo'});const Trabajo = model<interfacesPortfolio.trabajo>('trabajos',trabajoSchema);
 
 module.exports = { Admin , Ntair , Experiencia , Trabajo , Formacion , Dinteres };
 
