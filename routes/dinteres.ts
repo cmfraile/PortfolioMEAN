@@ -7,12 +7,26 @@ import * as ev from 'express-validator';
 
 const _r = Router();
 
-_r.get('/',[],);
+_r.get('/',getDINs);
 
-_r.post('/',[],);
+_r.post('/',[
+    vJWT,
+    ev.body('dato').not().isEmpty(),
+    VM
+],postDINs);
 
-_r.put('/',[],);
+_r.put('/',[
+    vJWT,
+    ev.body('id').isMongoId(),
+    ev.body('id').custom(eDIN),
+    VM
+],putDINs);
 
-_r.delete('/',[],);
+_r.delete('/',[
+    vJWT,
+    ev.body('id').isMongoId(),
+    ev.body('id').custom(eDIN),
+    VM
+],delDINs);
 
 module.exports = _r
