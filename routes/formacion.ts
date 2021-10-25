@@ -11,7 +11,7 @@ _r.get('/',getFORMs);
 
 _r.post('/',[
     vJWT,
-    ev.body('formacion').not().isEmpty(),
+    ev.body('materia').not().isEmpty(),
     ev.body('periodo').not().isEmpty(),
     ev.body('institucion').not().isEmpty(),
     VM

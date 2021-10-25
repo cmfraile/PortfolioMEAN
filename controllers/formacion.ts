@@ -3,7 +3,7 @@ const { Formacion } = require('../models/dbmodels');
 
 const getFORMs = async(req:Request,res:Response) => {
     try{
-        const consulta = await Formacion.find().sort({year:-1});
+        const consulta = await Formacion.find().sort({periodo:-1});
         return res.status(200).json(consulta);
     }catch(err){return res.status(500).json(err)};
 }
@@ -11,7 +11,7 @@ const getFORMs = async(req:Request,res:Response) => {
 const postFORMs = async(req:Request,res:Response) => {
     try{
         const data = {
-            formacion : req.body.formacion,
+            materia : req.body.materia,
             periodo : req.body.periodo,
             institucion : req.body.institucion,
         }
@@ -24,7 +24,7 @@ const putFORMs = async(req:Request,res:Response) => {
     try{
         const data = {
             id : req.body.id,
-            formacion : req.body.formacion,
+            materia : req.body.materia,
             periodo : req.body.periodo,
             institucion : req.body.institucion
         } ; const {id,...resto} = data;
