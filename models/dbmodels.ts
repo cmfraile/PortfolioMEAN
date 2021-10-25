@@ -32,6 +32,10 @@ const formacionSchema = new Schema<interfacesPortfolio.formacion>({
     institucion:{type:String,required:true}
 },{collection:'formacion'});const Formacion = model<interfacesPortfolio.formacion>('formacion',formacionSchema);
 
+const dinteresSchema = new Schema<interfacesPortfolio.dinteres>({
+    dato:{type:String,required:true}
+},{collection:'dinteres'});const Dinteres = model<interfacesPortfolio.dinteres>('dinteres',dinteresSchema);
+
 const trabajoSchema = new Schema<interfacesPortfolio.trabajos>({
     foto:{type:String,required:false},
     proyecto:{type:String,required:true},
@@ -41,5 +45,5 @@ const trabajoSchema = new Schema<interfacesPortfolio.trabajos>({
     enlace:{type:String,required:false}
 },{collection:'trabajo'});const Trabajo = model<interfacesPortfolio.trabajos>('trabajos',trabajoSchema);
 
-module.exports = { Admin , Ntair , Experiencia , Trabajo , Formacion };
+module.exports = { Admin , Ntair , Experiencia , Trabajo , Formacion , Dinteres };
 

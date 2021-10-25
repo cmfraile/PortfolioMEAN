@@ -17,6 +17,7 @@ class Server {
             ntair:'/api/ntair',
             experiencia:'/api/experiencia',
             formacion:'/api/formacion',
+            dinteres:'/api/dinteres',
         };
         this.middlewares();
         this.conectarDB();
@@ -35,6 +36,7 @@ class Server {
         this.app.use(this.paths.ntair,require('../routes/ntair'));
         this.app.use(this.paths.experiencia,require('../routes/experiencia'));
         this.app.use(this.paths.formacion,require('../routes/formacion'));
+        this.app.use(this.paths.dinteres,require('../routes/dinteress'));
     }
 
     async conectarDB(){await dbC()};
