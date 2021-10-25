@@ -1,6 +1,6 @@
 import { Router } from "express";
 const { validMaster:VM } = require('../middlewares/validmaster');
-const { existeObj } = require('../helpers/validadoresdb');
+const { eEXP , eFORM , eWORK } = require('../helpers/validadoresdb');
 const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 const { getEXPs , postEXPs , putEXPs , delEXPs } = require('../controllers/experiencia');
 import * as ev from 'express-validator';
@@ -20,13 +20,15 @@ _r.post('/',[
 
 _r.put('/',[
     vJWT,
-    //ev.body('id').isMongoId().custom( existeObj(ev.body('id'),'experiencia') ),
+    ev.body('id').isMongoId(),
+    ev.body('id').custom(eEXP),
     VM
 ],putEXPs);
 
 _r.delete('/',[
     vJWT,
-    //ev.body('id').isMongoId().custom( existeObj(ev.body('id'),'experiencia') ),
+    ev.body('id').isMongoId(),
+    ev.body('id').custom(eEXP),
     VM
 ],delEXPs);
 

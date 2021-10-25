@@ -24,13 +24,24 @@ const postEXPs = async(req:Request,res:Response) => {
 
 const putEXPs = async(req:Request,res:Response) => {
     try{
-        return res.send('Implantandolo');
+        const data = {
+            id : req.body.id,
+            puesto : req.body.puesto,
+            year : req.body.year,
+            meses : req.body.meses,
+            lugar : req.body.lugar
+        }
+        const {id,...resto} = data
+        const cambio = await Experiencia.findByIdAndUpdate(data.id,resto,{new:true});
+        return res.status(200).json(cambio);
     }catch(err){return res.status(500).json(err)};
-}
+};
 
 const delEXPs = async(req:Request,res:Response) => {
     try{
-        return res.send('Implantandolo');
+        const id = req.body.id;
+        const cambio = await Experiencia.findByIdAndDelete(id,{new:true});
+        return res.status(200).json(cambio);
     }catch(err){return res.status(500).json(err)};
 }
 
