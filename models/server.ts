@@ -1,5 +1,4 @@
 import express , { Application } from 'express';
-const cors = require('cors');
 const { dbC } = require('../db/configdb');
 
 class Server {
@@ -26,7 +25,6 @@ class Server {
     }
 
     middlewares(){
-        this.app.use(cors());
         this.app.use(express.json());
         //this.app.use( express.static('public') );
     }
