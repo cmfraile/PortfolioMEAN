@@ -1,6 +1,6 @@
 import { Router } from "express";
 const { validMaster:VM } = require('../middlewares/validmaster');
-const { eEXP , eFORM , eWORK } = require('../helpers/validadoresdb');
+const { eEXP } = require('../helpers/validadoresdb');
 const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 const { getEXPs , postEXPs , putEXPs , delEXPs } = require('../controllers/experiencia');
 import * as ev from 'express-validator';

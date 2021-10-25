@@ -15,7 +15,8 @@ class Server {
             testing:'/api/',
             admin:'/api/admin',
             ntair:'/api/ntair',
-            experiencia:'/api/experiencia'
+            experiencia:'/api/experiencia',
+            formacion:'/api/formacion',
         };
         this.middlewares();
         this.conectarDB();
@@ -33,6 +34,7 @@ class Server {
         this.app.use(this.paths.admin,require('../routes/admin'));
         this.app.use(this.paths.ntair,require('../routes/ntair'));
         this.app.use(this.paths.experiencia,require('../routes/experiencia'));
+        this.app.use(this.paths.formacion,require('../routes/formacion'));
     }
 
     async conectarDB(){await dbC()};

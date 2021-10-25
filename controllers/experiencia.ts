@@ -1,5 +1,4 @@
 import { Response , Request } from "express";
-import * as bc from 'bcryptjs';
 const { Experiencia } = require('../models/dbmodels');
 
 const getEXPs = async(req:Request,res:Response) => {
@@ -30,9 +29,8 @@ const putEXPs = async(req:Request,res:Response) => {
             year : req.body.year,
             meses : req.body.meses,
             lugar : req.body.lugar
-        }
-        const {id,...resto} = data
-        const cambio = await Experiencia.findByIdAndUpdate(data.id,resto,{new:true});
+        } ; const {id,...resto} = data
+        const cambio = await Experiencia.findByIdAndUpdate(id,resto,{new:true});
         return res.status(200).json(cambio);
     }catch(err){return res.status(500).json(err)};
 };
