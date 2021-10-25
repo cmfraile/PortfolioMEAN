@@ -1,27 +1,25 @@
 import { Response , Request } from "express";
 const { Dinteres } = require('../models/dbmodels');
-import shuffle from "underscore";
-
 
 const getDINs = async(req:Request,res:Response) => {
     try{
-        const consulta = await Dinteres.find();shuffle(consulta);
+        let consulta = await Dinteres.find();
         return res.status(200).json(consulta);
     }catch(err){return res.status(500).json(err)};
 }
 
 const postDINs = async(req:Request,res:Response) => {
     try{
-        const data = req.body.dato;
-        const insercion = new Dinteres(data) ; await insercion.save();
+        const dato = req.body.dato;
+        const insercion = new Dinteres({dato}) ; await insercion.save();
         return res.status(201).json({msg:"Dato de interes añadido a portfolio",insercion});
-    }catch(err){return res.status(500).json(err)};
+    }catch(err){console.log(err)};
 }
 
 const putDINs = async(req:Request,res:Response) => {
     try{
         const data = {id:req.body.id,dato:req.body.dato}
-        const cambio = await Dinteres.findByIdAndUpdate(data.id,data.dato,{new:true});
+        const cambio = await Dinteres.findByIdAndUpdate(data.id,{dato:data.dato},{new:true});
         return res.status(200).json(cambio);
     }catch(err){return res.status(500).json(err)};
 }

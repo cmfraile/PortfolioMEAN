@@ -36,7 +36,7 @@ class Server {
         this.app.use(this.paths.ntair,require('../routes/ntair'));
         this.app.use(this.paths.experiencia,require('../routes/experiencia'));
         this.app.use(this.paths.formacion,require('../routes/formacion'));
-        this.app.use(this.paths.dinteres,require('../routes/dinteress'));
+        this.app.use(this.paths.dinteres,require('../routes/dinteres'));
     }
 
     async conectarDB(){await dbC()};
