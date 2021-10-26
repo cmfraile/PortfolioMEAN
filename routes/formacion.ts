@@ -1,6 +1,6 @@
 import { Router } from "express";
 const { validMaster:VM } = require('../middlewares/validmaster');
-const { eFORM } = require('../helpers/validadoresdb');
+const { eFORM , periodoCorrecto } = require('../helpers/validadoresdb');
 const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 const { getFORMs , postFORMs , putFORMs , delFORMs } = require('../controllers/formacion');
 import * as ev from 'express-validator';
@@ -13,6 +13,7 @@ _r.post('/',[
     vJWT,
     ev.body('materia').not().isEmpty(),
     ev.body('periodo').not().isEmpty(),
+    ev.body('periodo').custom(periodoCorrecto),
     ev.body('institucion').not().isEmpty(),
     VM
 ],postFORMs);

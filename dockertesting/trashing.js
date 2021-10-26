@@ -4,6 +4,12 @@ db.createUser({
     roles:['readWrite']
 })
 
+db.experiencia.drop();
+db.ntair.drop();
+db.trabajo.drop();
+db.dinteres.drop();
+db.formacion.drop();
+
 db.usuarios.insertMany([
     {
         nombre:'Carlos Fraile',
