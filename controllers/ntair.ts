@@ -7,7 +7,7 @@ import * as jwt from 'jsonwebtoken';
 const ntairGET = async(req:Request,res:Response) => {
     try{
         const busqueda:ntair[] = await Ntair.find();
-        if(!busqueda.length){return res.status(204)};
+        if(!busqueda.length){res.status(204)};
         return res.status(200).json(busqueda);
     }catch(err){return res.status(500).json(err)};
 }
