@@ -26,7 +26,7 @@ const putDINs = async(req:Request,res:Response) => {
 
 const delDINs = async(req:Request,res:Response) => {
     try{
-        const id = req.body.id;
+        const id = req.headers.id;
         const cambio = await Dinteres.findByIdAndDelete(id,{new:true});
         return res.status(200).json(cambio);
     }catch(err){return res.status(500).json(err)};

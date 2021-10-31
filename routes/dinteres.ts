@@ -24,8 +24,8 @@ _r.put('/',[
 
 _r.delete('/',[
     vJWT,
-    ev.body('id').isMongoId(),
-    ev.body('id').custom(eDIN),
+    ev.header('id').isMongoId(),
+    ev.header('id').custom(eDIN),
     VM
 ],delDINs);
 
