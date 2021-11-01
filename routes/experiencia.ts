@@ -15,6 +15,7 @@ _r.post('/',[
     ev.body('year').not().isEmpty(),
     ev.body('meses').not().isEmpty(),
     ev.body('lugar').not().isEmpty(),
+    ev.body('descripcion').not().isEmpty(),
     VM
 ],postEXPs);
 

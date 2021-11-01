@@ -14,7 +14,8 @@ const postEXPs = async(req:Request,res:Response) => {
             puesto : req.body.puesto,
             year : req.body.year,
             meses : req.body.meses,
-            lugar : req.body.lugar
+            lugar : req.body.lugar,
+            descripcion : req.body.descripcion
         }
         const insercion = new Experiencia(data); await insercion.save();
         return res.status(201).json({msg:'Experiencia añadida a portfolio',insercion});
@@ -28,7 +29,8 @@ const putEXPs = async(req:Request,res:Response) => {
             puesto : req.body.puesto,
             year : req.body.year,
             meses : req.body.meses,
-            lugar : req.body.lugar
+            lugar : req.body.lugar,
+            descripcion : req.body.descripcion
         } ; const {id,...resto} = data
         const cambio = await Experiencia.findByIdAndUpdate(id,resto,{new:true});
         return res.status(200).json(cambio);
