@@ -28,8 +28,8 @@ _r.put('/',[
 
 _r.delete('/',[
     vJWT,
-    ev.body('id').isMongoId(),
-    ev.body('id').custom(eEXP),
+    ev.header('id').isMongoId(),
+    ev.header('id').custom(eEXP),
     VM
 ],delEXPs);
 
