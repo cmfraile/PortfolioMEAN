@@ -35,7 +35,7 @@ const putFORMs = async(req:Request,res:Response) => {
 
 const delFORMs = async(req:Request,res:Response) => {
     try{
-        const id = req.body.id;
+        const id = req.headers.id;
         const cambio = await Formacion.findByIdAndDelete(id,{new:true});
         return res.status(200).json(cambio);
     }catch(err){return res.status(500).json(err)};
