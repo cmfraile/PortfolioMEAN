@@ -17,11 +17,21 @@ _r.get('/gdp/:ruta',[
 
 _r.post('/',[
     validFile,
+    ev.body('proyecto').not().isEmpty(),
+    ev.body('estado').not().isEmpty(),
+    ev.body('descripcion').not().isEmpty(),
+    ev.body('autor').not().isEmpty(),
+    ev.body('enlace').not().isEmpty(),
     VM
 ],postWORKs);
 
 _r.post('/pwt',[
-    validFile,
+    ev.body('foto').not().isEmpty(),
+    ev.body('proyecto').not().isEmpty(),
+    ev.body('estado').not().isEmpty(),
+    ev.body('descripcion').not().isEmpty(),
+    ev.body('autor').not().isEmpty(),
+    ev.body('enlace').not().isEmpty(),
     VM
 ],postWORKsTEST);
 

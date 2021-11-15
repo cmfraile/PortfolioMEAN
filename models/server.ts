@@ -19,6 +19,7 @@ class Server {
             experiencia:'/api/experiencia',
             formacion:'/api/formacion',
             dinteres:'/api/dinteres',
+            trabajo:'/api/trabajo',
         };
         this.middlewares();
         this.conectarDB();
@@ -40,6 +41,7 @@ class Server {
         this.app.use(this.paths.experiencia,require('../routes/experiencia'));
         this.app.use(this.paths.formacion,require('../routes/formacion'));
         this.app.use(this.paths.dinteres,require('../routes/dinteres'));
+        this.app.use(this.paths.trabajo,require('../routes/trabajos'));
     }
 
     async conectarDB(){await dbC()};

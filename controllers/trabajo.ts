@@ -1,6 +1,6 @@
 import { Response , Request } from "express";
 const { Trabajo } = require('../models/dbmodels');
-const { uploadfile:uf , delfile:df } = require('../helpers/uploadfile');
+const { uploadfile:uf , delfile:df } = require('../helpers/movefiles');
 
 const getWORKs = async(req:Request,res:Response) => {
     try {
