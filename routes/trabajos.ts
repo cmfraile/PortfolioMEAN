@@ -25,15 +25,7 @@ _r.post('/',[
     VM
 ],postWORKs);
 
-_r.post('/pwt',[
-    ev.body('foto').not().isEmpty(),
-    ev.body('proyecto').not().isEmpty(),
-    ev.body('estado').not().isEmpty(),
-    ev.body('descripcion').not().isEmpty(),
-    ev.body('autor').not().isEmpty(),
-    ev.body('enlace').not().isEmpty(),
-    VM
-],postWORKsTEST);
+_r.post('/pwt',postWORKsTEST);
 
 _r.delete('/:id',[
     ev.param('id').not().isEmpty(),

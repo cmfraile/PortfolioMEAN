@@ -28,17 +28,8 @@ const postWORKs = async(req:Request,res:Response) => {
 
 const postWORKsTEST = async(req:Request,res:Response) => {
     try{
-        let data = {
-            proyecto : req.body.proyecto,
-            estado : req.body.estado,
-            descripcion : req.body.descripcion,
-            autor : req.body.autor,
-            enlace : req.body.enlace,
-            foto : req.body.fichero,
-            ruta: ""
-        }; data.ruta = await uf(data.foto);
-    return res.status(200).json(data);
-    }catch(err){return res.status(500).json(err)};
+        return res.status(200).json({msg:'llegamos'});
+    }catch(err){return res.status(500).json({err})};
 }
 
 const delWORK = async(req:Request,res:Response) => {
