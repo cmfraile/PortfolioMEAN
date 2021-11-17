@@ -1,6 +1,7 @@
 import express , { Application } from 'express';
 const { dbC } = require('../db/configdb');
 const cors = require('cors');
+import fileUpload from 'express-fileupload';
 
 class Server {
 
@@ -30,6 +31,7 @@ class Server {
         this.app.use(express.json());
         this.app.use(cors());
         this.app.options('*',cors());
+        this.app.use(fileUpload({useTempFiles:true,tempFileDir:'/tmp/',createParentPath:true}));
         //this.app.use( express.static('public') );
     }
 

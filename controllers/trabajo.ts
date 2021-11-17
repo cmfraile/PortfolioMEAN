@@ -28,7 +28,9 @@ const postWORKs = async(req:Request,res:Response) => {
 
 const postWORKsTEST = async(req:Request,res:Response) => {
     try{
-        return res.status(200).json({msg:'llegamos'});
+        const petision = req;
+        console.log(req);
+        return res.status(200).json({msg:'fin'});
     }catch(err){return res.status(500).json({err})};
 }
 
