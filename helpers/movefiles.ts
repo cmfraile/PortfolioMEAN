@@ -1,22 +1,19 @@
 import { UploadedFile } from "express-fileupload";
 import { existsSync , unlinkSync } from 'fs';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 import path from 'path';
 
 const uploadfile = (fichero:UploadedFile) => {
     return new Promise((rs,rj) => {
         const eValidas = ['png','jpg','jpeg']
         const extension = fichero.name.split('.')[fichero.name.split('.').length - 1];
-        const nTEMP = `${uuid()}.${extension}`;
+        const nTEMP = `${v4()}.${extension}`;
         const uP = path.join(__dirname,'../db&storage/storage',nTEMP);
         if(!eValidas.includes(extension)){return rj(`La extensión ${extension} no esta permitida`)};
-        rs(nTEMP);
-        /*
         fichero.mv(uP,(err) => {
             if(err){rj(err)};
             rs(nTEMP);
         })
-        */
     });
 }
 

@@ -25,7 +25,7 @@ _r.post('/',[
     VM
 ],postWORKs);
 
-_r.post('/pwt',postWORKsTEST);
+//_r.post('/pwt',postWORKsTEST);
 
 _r.delete('/:id',[
     ev.param('id').not().isEmpty(),
