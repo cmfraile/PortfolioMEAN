@@ -1,6 +1,6 @@
 import { Router } from "express";
 const { ntairGET , ntairPOST } = require('../controllers/ntair');
-const { validMaster:VM } = require('../middlewares/validmaster');
+const { validMaster:VM } = require('../middlewares/validadores');
 const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 import * as ev from 'express-validator';
 

@@ -1,6 +1,6 @@
 import { Router } from "express";
 const { crearADMIN , loginADMIN } = require('../controllers/admin');
-const { validMaster:VM } = require('../middlewares/validmaster');
+const { validMaster:VM } = require('../middlewares/validadores');
 import * as ev from 'express-validator';
 
 const _r = Router();

@@ -1,5 +1,5 @@
 import { Router } from "express";
-const { validMaster:VM } = require('../middlewares/validmaster');
+const { validMaster:VM } = require('../middlewares/validadores');
 const { eFORM , periodoCorrecto } = require('../helpers/validadoresdb');
 const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 const { getFORMs , postFORMs , putFORMs , delFORMs } = require('../controllers/formacion');
