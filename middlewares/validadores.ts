@@ -24,7 +24,6 @@ const validMaster = (req:Request,res:Response,next:NextFunction) => {
 
 const validRoute = (req:Request,res:Response,next:NextFunction) => {
     const { ruta } = req.params;
-    console.log(ruta);
     if(!validate(ruta.split('.')[0])){return res.status(400).send("la ruta de la imagen no es correcta")};
     const pathimg = path.join(__dirname,'../db&storage/storage',ruta);
     if(fs.existsSync(pathimg)){req.body.ruta = pathimg}else{req.body.ruta = undefined};

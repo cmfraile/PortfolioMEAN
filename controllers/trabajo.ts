@@ -2,7 +2,7 @@ import { Response , Request } from "express";
 const { Trabajo } = require('../models/dbmodels');
 const { uploadfile:uf , delfile:df } = require('../helpers/movefiles');
 
-const dumbcall:string = `${process.env.ENVIROMENT}/api/crudimg/gdp/`
+const dumbcall:string = `${process.env.ENVIROMENT}/api/trabajo/gdp/`
 
 const getWORKs = async(req:Request,res:Response) => {
     try {
@@ -45,6 +45,14 @@ const delWORK = async(req:Request,res:Response) => {
     
 }
 
+const putWORK = async(req:Request,res:Response) => {
+    try{
+        const data = {
+            id : req.body.id,
+        }
+    } catch(err){return res.status(500).json(err)};
+}
+
 const dumbpic = async(req:Request,res:Response) => {
     try {
         const rutafichero = req.body.ruta;
@@ -55,4 +63,4 @@ const dumbpic = async(req:Request,res:Response) => {
 
 
 
-module.exports = { getWORKs , postWORKs , postWORKsTEST , dumbpic }
+module.exports = { getWORKs , postWORKs , postWORKsTEST , dumbpic , putWORK }
