@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as ev from 'express-validator';
 const { getWORKs , postWORKs , dumbpic } = require('../controllers/trabajo');
-const { validMaster:VM } = require('../middlewares/validmaster');
+const { validMaster:VM } = require('../middlewares/validadores');
 const { validFile , validRoute } = require('../middlewares/validadores');
 import { validate } from "uuid";
 
