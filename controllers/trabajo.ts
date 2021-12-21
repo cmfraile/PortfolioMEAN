@@ -57,8 +57,19 @@ const putWORK = async(req:Request,res:Response) => {
             autor : req.body.autor,
             enlace : req.body.enlace
         };
-        console.log(data);
-        return res.status(200).json(data);
+        if(data.foto == null){
+            const {id,foto,...resto} = data;
+            const cambio = await Trabajo.findByIdAndUpdate(id,resto,{new:true});
+            return res.status(200).json(cambio);
+        }
+        if(data.foto !== null){
+            const cambio = await Trabajo.findById(data.id);
+            await df(cambio.foto);
+            const {id,...resto} = data;
+            resto.foto = await uf(resto.foto);
+            const cambio2 = await Trabajo.findByIdAndUpdate(id,resto,{new:true});
+            return res.status(200).json(cambio);
+        }
     } catch(err){return res.status(500).json(err)};
 }
 
@@ -72,4 +83,4 @@ const dumbpic = async(req:Request,res:Response) => {
 
 
 
-module.exports = { getWORKs , postWORKs , postWORKsTEST , dumbpic , putWORK }
+module.exports = { getWORKs , postWORKs , postWORKsTEST , dumbpic , putWORK , delWORK }
