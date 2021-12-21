@@ -1,7 +1,9 @@
 import { Router } from "express";
 import * as ev from 'express-validator';
 const { getWORKs , postWORKs , dumbpic , putWORK , delWORK } = require('../controllers/trabajo');
+const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 const { validMaster:VM } = require('../middlewares/validadores');
+const { eWORK } = require('../helpers/validadoresdb');
 const { validFile , validRoute } = require('../middlewares/validadores');
 import { validate } from "uuid";
 
@@ -34,9 +36,11 @@ _r.put('/',[
     VM
 ],putWORK);
 
-_r.delete('/:id',[
-    ev.param('id').not().isEmpty(),
-    ev.param('id').custom( validate )
+_r.delete('/',[
+    vJWT,
+    ev.header('id').not().isEmpty(),
+    ev.header('id').custom( eWORK ),
+    VM
 ],delWORK)
 
 module.exports = _r

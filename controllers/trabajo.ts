@@ -35,14 +35,13 @@ const postWORKsTEST = async(req:Request,res:Response) => {
 }
 
 const delWORK = async(req:Request,res:Response) => {
-    let aborrar = await Trabajo.findByIdAndDelete(req.params.id);
+    let aborrar = await Trabajo.findByIdAndDelete(req.headers.id);
     if(aborrar !== null){
-        await df(aborrar.ruta);
+        await df(aborrar.foto);
         return res.status(200).json(aborrar);
     } else {
         return res.status(200).json(aborrar);
     }
-    
 }
 
 const putWORK = async(req:Request,res:Response) => {
