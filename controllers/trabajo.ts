@@ -47,9 +47,18 @@ const delWORK = async(req:Request,res:Response) => {
 
 const putWORK = async(req:Request,res:Response) => {
     try{
+        const foto = req.files?.foto || null;
         const data = {
             id : req.body.id,
-        }
+            foto,
+            proyecto : req.body.proyecto,
+            descripcion : req.body.descripcion,
+            estado : req.body.estado,
+            autor : req.body.autor,
+            enlace : req.body.enlace
+        };
+        console.log(data);
+        return res.status(200).json(data);
     } catch(err){return res.status(500).json(err)};
 }
 
