@@ -5,7 +5,6 @@ const { validarJWT:vJWT } = require('../middlewares/validarJWT');
 const { validMaster:VM } = require('../middlewares/validadores');
 const { eWORK } = require('../helpers/validadoresdb');
 const { validFile , validRoute } = require('../middlewares/validadores');
-import { validate } from "uuid";
 
 const _r = Router();
 
@@ -18,6 +17,7 @@ _r.get('/gdp/:ruta',[
 ],dumbpic);
 
 _r.post('/',[
+    vJWT,
     validFile,
     ev.body('proyecto').not().isEmpty(),
     ev.body('estado').not().isEmpty(),
@@ -28,6 +28,7 @@ _r.post('/',[
 ],postWORKs);
 
 _r.put('/',[
+    vJWT,
     ev.body('proyecto').not().isEmpty(),
     ev.body('estado').not().isEmpty(),
     ev.body('descripcion').not().isEmpty(),
