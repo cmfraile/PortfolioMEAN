@@ -22,6 +22,10 @@ _r.put('/',[
     vJWT,
     ev.body('id').isMongoId(),
     ev.body('id').custom(eFORM),
+    ev.body('materia').not().isEmpty(),
+    ev.body('periodo').not().isEmpty(),
+    ev.body('periodo').custom(periodoCorrecto),
+    ev.body('institucion').not().isEmpty(),
     VM
 ],putFORMs);
 
