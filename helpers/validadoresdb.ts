@@ -25,7 +25,7 @@ const eWORK = async(id:string="",next:NextFunction) => {
     next;
 }
 
-const periodoCorrecto = async(periodo:[number,number|null],next:NextFunction) => {
+const periodoCorrecto = async(periodo:[number,number]|[number],next:NextFunction) => {
     if(periodo[1] == null){next};
     const periodoproceso:any[] = [periodo[0],periodo[1]];
     if(periodoproceso[1] < periodoproceso[0]){throw new Error('El final del periodo no puede ser anterior a su principio')}else{next};

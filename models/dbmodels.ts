@@ -29,7 +29,7 @@ const experienciaSchema = new Schema<interfacesPortfolio.experiencia>({
 
 const formacionSchema = new Schema<interfacesPortfolio.formacion>({
     materia:{type:String,required:true},
-    periodo:{type:[Number,Number||null],required:true},
+    periodo:{type:[Number]||[Number,Number],required:true},
     institucion:{type:String,required:true}
 },{collection:'formacion'});const Formacion = model<interfacesPortfolio.formacion>('formacion',formacionSchema);
 
