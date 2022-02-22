@@ -43,7 +43,8 @@ const trabajoSchema = new Schema<interfacesPortfolio.trabajo>({
     estado:{type:String,required:false},
     descripcion:{type:String,required:true},
     autor:{type:String,required:true},
-    enlace:{type:String,required:false}
+    enlace:{type:String,required:false},
+    enlacetxt:{type:String,required:false}
 },{collection:'trabajo'});const Trabajo = model<interfacesPortfolio.trabajo>('trabajos',trabajoSchema);
 
 module.exports = { Admin , Ntair , Experiencia , Trabajo , Formacion , Dinteres };

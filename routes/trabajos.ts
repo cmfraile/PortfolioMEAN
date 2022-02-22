@@ -23,7 +23,6 @@ _r.post('/',[
     ev.body('estado').not().isEmpty(),
     ev.body('descripcion').not().isEmpty(),
     ev.body('autor').not().isEmpty(),
-    ev.body('enlace').not().isEmpty(),
     VM
 ],postWORKs);
 
@@ -33,7 +32,6 @@ _r.put('/',[
     ev.body('estado').not().isEmpty(),
     ev.body('descripcion').not().isEmpty(),
     ev.body('autor').not().isEmpty(),
-    ev.body('enlace').not().isEmpty(),
     VM
 ],putWORK);
 

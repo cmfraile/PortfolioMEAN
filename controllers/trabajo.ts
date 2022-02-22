@@ -20,6 +20,7 @@ const postWORKs = async(req:Request,res:Response) => {
             descripcion : req.body.descripcion,
             autor : req.body.autor,
             enlace : req.body.enlace,
+            enlacetxt : req.body.enlacetxt,
             foto : req.body.fichero,
         } ; data.foto = await uf(data.foto) ;
         const nuevocurro = new Trabajo(data) ; await nuevocurro.save();
@@ -54,7 +55,8 @@ const putWORK = async(req:Request,res:Response) => {
             descripcion : req.body.descripcion,
             estado : req.body.estado,
             autor : req.body.autor,
-            enlace : req.body.enlace
+            enlace : req.body.enlace,
+            enlacetxt : req.body.enlacetxt
         };
         if(data.foto == null){
             const {id,foto,...resto} = data;
