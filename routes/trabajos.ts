@@ -20,7 +20,6 @@ _r.post('/',[
     vJWT,
     validFile,
     ev.body('proyecto').not().isEmpty(),
-    ev.body('estado').not().isEmpty(),
     ev.body('descripcion').not().isEmpty(),
     ev.body('autor').not().isEmpty(),
     VM
@@ -29,7 +28,6 @@ _r.post('/',[
 _r.put('/',[
     vJWT,
     ev.body('proyecto').not().isEmpty(),
-    ev.body('estado').not().isEmpty(),
     ev.body('descripcion').not().isEmpty(),
     ev.body('autor').not().isEmpty(),
     VM

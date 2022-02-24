@@ -16,7 +16,7 @@ const postWORKs = async(req:Request,res:Response) => {
     try{
         const data = {
             proyecto : req.body.proyecto,
-            estado : req.body.estado,
+            estado : req.body.estado || "",
             descripcion : req.body.descripcion,
             autor : req.body.autor,
             enlace : req.body.enlace || "",
@@ -53,7 +53,7 @@ const putWORK = async(req:Request,res:Response) => {
             foto,
             proyecto : req.body.proyecto,
             descripcion : req.body.descripcion,
-            estado : req.body.estado,
+            estado : req.body.estado || "",
             autor : req.body.autor,
             enlace : req.body.enlace || "",
             enlacetxt : req.body.enlacetxt || ""
