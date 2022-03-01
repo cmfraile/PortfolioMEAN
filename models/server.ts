@@ -33,6 +33,7 @@ class Server {
         //Esto esta bien:
         console.log(path.join(__dirname,'../storage','nombretemporal.jpg'));
         console.log(process.env);
+        console.log(this.port);
     }
 
     middlewares(){
