@@ -2,6 +2,7 @@ import express , { Application } from 'express';
 const { dbC } = require('../db/configdb');
 const cors = require('cors');
 import fileUpload from 'express-fileupload';
+import path from 'path';
 
 class Server {
 
@@ -25,6 +26,12 @@ class Server {
         this.middlewares();
         this.conectarDB();
         this.routes();
+        //this.testing();
+    }
+
+    testing(){
+        //Esto esta bien:
+        console.log(path.join(__dirname,'../storage','nombretemporal.jpg'))
     }
 
     middlewares(){
@@ -49,9 +56,7 @@ class Server {
     async conectarDB(){await dbC()};
 
     listen(){
-        this.app.listen(this.port, () => {
-            console.log(`SERVIDOR CORRIENDO EN DESARROLLO`);
-        })
+        this.app.listen(this.port)
     }
 
 }

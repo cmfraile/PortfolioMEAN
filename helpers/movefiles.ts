@@ -8,7 +8,7 @@ const uploadfile = (fichero:UploadedFile) => {
         const eValidas = ['png','jpg','jpeg']
         const extension = fichero.name.split('.')[fichero.name.split('.').length - 1];
         const nTEMP = `${v4()}.${extension}`;
-        const uP = path.join(__dirname,'../db&storage/storage',nTEMP);
+        const uP = path.join(__dirname,'../storage',nTEMP);
         if(!eValidas.includes(extension)){return rj(`La extensión ${extension} no esta permitida`)};
         fichero.mv(uP,(err) => {
             if(err){rj(err)};
@@ -19,7 +19,7 @@ const uploadfile = (fichero:UploadedFile) => {
 
 const delfile = (place:string) => {
     return new Promise((rs,rj) => {
-        const uP:string = path.join(__dirname,'../db&storage/storage',place);
+        const uP:string = path.join(__dirname,'../storage',place);
         if(existsSync(uP)){rs(unlinkSync(uP))};
     });
 }
