@@ -26,12 +26,13 @@ class Server {
         this.middlewares();
         this.conectarDB();
         this.routes();
-        //this.testing();
+        this.testing();
     }
 
     testing(){
         //Esto esta bien:
-        console.log(path.join(__dirname,'../storage','nombretemporal.jpg'))
+        console.log(path.join(__dirname,'../storage','nombretemporal.jpg'));
+        console.log(process.env);
     }
 
     middlewares(){
