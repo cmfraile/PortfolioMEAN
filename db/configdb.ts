@@ -8,7 +8,7 @@ const dbC = async() => {
             pass:'usuario',
             dbName:'BDP',
         }
-        await MonConnect(`mongodb://localhost:27017/${options.dbName}`,options,(err) => {console.log(err)});
+        await MonConnect(`mongodb://${process.env.DBIP || ""}/${options.dbName}`,options,(err) => {console.log(err)});
         //console.log('Estamos correctamente conectados a la base de datos.')
     }catch(err){console.log(err);throw new Error('No se logro establecer la conexión')};
 }
