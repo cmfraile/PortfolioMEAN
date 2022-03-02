@@ -26,7 +26,7 @@ class Server {
         this.middlewares();
         this.conectarDB();
         this.routes();
-        this.testing();
+        //this.testing();
     }
 
     testing(){
