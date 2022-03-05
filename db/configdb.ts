@@ -5,8 +5,8 @@ const dbC = async() => {
     console.log(process.env);
     try{
         const options:ConnectOptions = {
-            user:'usuario',
-            pass:'usuario',
+            user:process.env.UDB,
+            pass:process.env.PDB,
             dbName:'BDP',
         }
         await MonConnect(`mongodb://${process.env.DBIP}/${options.dbName}`,options,(err) => {console.log(err)});
