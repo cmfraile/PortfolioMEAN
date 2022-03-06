@@ -5,12 +5,6 @@ import * as ev from 'express-validator';
 
 const _r = Router();
 
-_r.post('/crearADMIN',[
-    ev.body('nombre').not().isEmpty(),
-    ev.body('pass').not().isEmpty(),
-    VM
-],crearADMIN);
-
 _r.post('/login',[
     ev.body('nombre').not().isEmpty(),
     ev.body('pass').not().isEmpty(),
